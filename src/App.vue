@@ -1,8 +1,15 @@
-<script setup lang="ts">
-
+<script lang="ts">
+import List from "./components/List.vue";
+import Header from "./components/Header.vue";
+export default {
+  components: {
+    List,
+    Header,
+  },
+};
 </script>
 
 <template>
-  Hi mom
+  <Header />
+  <List />
 </template>
-
