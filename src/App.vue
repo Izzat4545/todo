@@ -1,5 +1,5 @@
 <script lang="ts">
-import List from "./components/List.vue";
+import List from "./components/taskList/List.vue";
 import Header from "./components/Header.vue";
 export default {
   components: {
