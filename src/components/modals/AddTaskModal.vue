@@ -16,48 +16,48 @@
 </template>
 
 <script lang="ts">
-import { postData } from "../../utils/firebaseUtils/FirebaseCrud";
+// import { postData } from "../../utils/firebaseUtils/FirebaseCrud";
 export default {
   data() {
     return {
-      data: {
-        "12282023": [
-          {
-            task: "Do the dishes",
-            subtask: ["Clean the house"],
-            priority: "important",
-          },
-          {
-            task: "Fix the motorbike",
-            subtask: ["Clean it after finishing", "Change Oil"],
-            priority: "optional",
-          },
-        ],
-        "12292023": [
-          {
-            task: "Do the dishes",
-            subtask: ["Clean the house"],
-            priority: "important",
-          },
-          {
-            task: "Fix the motorbike",
-            subtask: ["Clean it after finishing", "Change Oil"],
-            priority: "optional",
-          },
-        ],
-        "12302023": [
-          {
-            task: "Do the dishes",
-            subtask: ["Clean the house"],
-            priority: "important",
-          },
-          {
-            task: "Fix the motorbike",
-            subtask: ["Clean it after finishing", "Change Oil"],
-            priority: "optional",
-          },
-        ],
-      },
+      // data: {
+      //   "12282023": [
+      //     {
+      //       task: "Do the dishes",
+      //       subtask: ["Clean the house"],
+      //       priority: "important",
+      //     },
+      //     {
+      //       task: "Fix the motorbike",
+      //       subtask: ["Clean it after finishing", "Change Oil"],
+      //       priority: "optional",
+      //     },
+      //   ],
+      //   "12292023": [
+      //     {
+      //       task: "Do the dishes",
+      //       subtask: ["Clean the house"],
+      //       priority: "important",
+      //     },
+      //     {
+      //       task: "Fix the motorbike",
+      //       subtask: ["Clean it after finishing", "Change Oil"],
+      //       priority: "optional",
+      //     },
+      //   ],
+      //   "12302023": [
+      //     {
+      //       task: "Do the dishes",
+      //       subtask: ["Clean the house"],
+      //       priority: "important",
+      //     },
+      //     {
+      //       task: "Fix the motorbike",
+      //       subtask: ["Clean it after finishing", "Change Oil"],
+      //       priority: "optional",
+      //     },
+      //   ],
+      // },
     };
   },
   props: {
@@ -74,9 +74,6 @@ export default {
     toggleModal() {
       this.closeModal();
     },
-  },
-  mounted() {
-    postData(this.data);
   },
 };
 </script>

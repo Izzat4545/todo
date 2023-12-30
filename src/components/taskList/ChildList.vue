@@ -18,7 +18,18 @@ export default {
     },
     childFunction() {
       console.log("child function");
-      console.log(this.tasks);
+    },
+    getPriorityClass(priority: string) {
+      switch (priority) {
+        case "important":
+          return "bg-red-400";
+        case "medium":
+          return "bg-yellow-400";
+        case "optional":
+          return "bg-green-400";
+        default:
+          return "bg-black"; // or set a default color for other cases
+      }
     },
   },
   props: {
@@ -39,7 +50,10 @@ export default {
     >
       <div class="flex gap-2 h-full justify-start items-center">
         <!-- IMPORTANCE -->
-        <div class="bg-red-400 h-full px-2"></div>
+        <div
+          class="h-full px-2"
+          :class="getPriorityClass(tasks.priority)"
+        ></div>
         <!-- TASK -->
         <div class="text-[20px]">
           {{ tasks.task }}
