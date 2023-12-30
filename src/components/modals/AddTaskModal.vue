@@ -16,7 +16,9 @@
 
 <script lang="ts">
 export default {
-  data() {},
+  data() {
+    return {};
+  },
   props: {
     showModal: {
       type: Boolean,
