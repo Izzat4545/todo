@@ -1,13 +1,9 @@
-export interface SubtaskT {
+export interface Task {
   task: string;
   subtask: string[];
   priority: string;
 }
 
-export interface TaskGroupT {
-  [date: string]: SubtaskT[];
-}
-
-export interface TasksT {
-  tasks: TaskGroupT[];
-}
+export type MyData = {
+  [date: string]: Task[];
+};
