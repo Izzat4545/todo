@@ -28,7 +28,7 @@ export default {
         case "optional":
           return "bg-green-400";
         default:
-          return "bg-black"; // or set a default color for other cases
+          return "bg-slate-300";
       }
     },
   },
@@ -46,7 +46,7 @@ export default {
     class="btn my-2 btn-ghost h-full rounded-md hover:bg-transparent overflow-hidden p-0 w-full group"
   >
     <div
-      class="bg-white transition-all group-hover:bg-slate-50 w-full flex pr-2 h-[70px] items-center justify-between"
+      class="bg-white transition-all group-hover:bg-slate-100 w-full flex pr-2 h-[70px] items-center justify-between"
     >
       <div class="flex gap-2 h-full justify-start items-center">
         <!-- IMPORTANCE -->
@@ -55,7 +55,12 @@ export default {
           :class="getPriorityClass(tasks.priority)"
         ></div>
         <!-- TASK -->
-        <div class="text-[20px]">
+        <div
+          class="text-[20px]"
+          :class="
+            tasks.isFinished ? 'line-through text-slate-300' : 'text-black'
+          "
+        >
           {{ tasks.task }}
         </div>
       </div>

@@ -1,7 +1,8 @@
 export interface Task {
   task: string;
-  subtask: string[];
+  description: string;
   priority: string;
+  isFinished: boolean;
 }
 
 export type MyData = {
