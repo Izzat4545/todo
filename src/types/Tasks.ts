@@ -1,7 +1,7 @@
 export interface Task {
-  task: string;
-  description: string;
+  title: string;
   priority: string;
+  description: string;
   isFinished: boolean;
 }
 

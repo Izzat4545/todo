@@ -10,7 +10,7 @@ export default {
     };
   },
   async mounted() {
-    await this.taskListStore.fetchData();
+    await this.taskListStore.fetchTasks();
   },
   components: {
     List,

@@ -20,7 +20,10 @@ export default {
 </script>
 
 <template>
-  <div v-if="!taskListStore.isLoading" class="w-[50%] m-auto">
+  <div
+    v-if="taskListStore.tasksFromState && !taskListStore.isLoading"
+    class="w-[50%] m-auto"
+  >
     <div v-for="(task, key) in taskListStore.tasksFromState" :key="key">
       <div class="text-lg text-center py-3">
         {{ formatDates(key.toString()) }}

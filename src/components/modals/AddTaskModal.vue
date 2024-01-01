@@ -1,9 +1,10 @@
 <script lang="ts">
-// import { postData } from "../../utils/firebaseUtils/FirebaseCrud";
+import { useTaskListStore } from "../../store/TaskListStore";
 export default {
   data() {
     return {
       error: "",
+      taskListStore: useTaskListStore(),
       form: {
         title: "",
         priority: "",
@@ -30,6 +31,7 @@ export default {
       if (this.form.priority && this.form.title.length > 0) {
         this.error = "";
         this.$emit("submit", this.form);
+        this.taskListStore.postTasks(this.form);
       } else {
         this.error = "Please fill all the fields";
       }
@@ -45,6 +47,7 @@ export default {
           description: "",
           isFinished: false,
         };
+        this.error = "";
       }
     },
   },

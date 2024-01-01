@@ -61,7 +61,7 @@ export default {
             tasks.isFinished ? 'line-through text-slate-300' : 'text-black'
           "
         >
-          {{ tasks.task }}
+          {{ tasks.title }}
         </div>
       </div>
       <button
