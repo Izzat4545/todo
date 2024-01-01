@@ -1,15 +1,11 @@
 <script lang="ts">
 import ChildList from "./ChildList.vue";
-import { MyData } from "../../types/Tasks";
-import { readData } from "../../utils/firebaseUtils/FirebaseCrud";
 import { formatDate } from "../../utils/formatDates";
-
+import { useTaskListStore } from "../../store/TaskListStore";
 export default {
   data() {
     return {
-      isLoading: false,
-      tasksFromServer: {} as MyData | undefined,
-      tasksFromState: {} as MyData | undefined,
+      taskListStore: useTaskListStore(),
     };
   },
   components: {
@@ -20,18 +16,12 @@ export default {
       return formatDate(date);
     },
   },
-  async mounted() {
-    this.isLoading = true;
-    this.tasksFromServer = await readData("tasks");
-    this.tasksFromState = JSON.parse(JSON.stringify(this.tasksFromServer));
-    this.isLoading = false;
-  },
 };
 </script>
 
 <template>
-  <div v-if="!isLoading" class="w-[50%] m-auto">
-    <div v-for="(task, key) in tasksFromState" :key="key">
+  <div v-if="!taskListStore.isLoading" class="w-[50%] m-auto">
+    <div v-for="(task, key) in taskListStore.tasksFromState" :key="key">
       <div class="text-lg text-center py-3">
         {{ formatDates(key.toString()) }}
       </div>
@@ -46,19 +36,19 @@ export default {
   </div>
   <!-- SKELET -->
   <div
-    v-if="isLoading"
+    v-if="taskListStore.isLoading"
     v-for="index in 10"
     :key="index"
-    class="border border-blue-300 my-2 shadow rounded-md overflow-hidden w-[50%] m-auto"
+    class="my-2 skeleton shadow rounded-md overflow-hidden w-[50%] m-auto"
   >
-    <div class="animate-pulse flex gap-1">
-      <div class="bg-slate-700 h-[80px] px-2"></div>
+    <div class="flex gap-1">
+      <div class="bg-[#9b9b9b] h-[80px] px-2"></div>
       <div class="flex w-full gap-3 justify-between items-center">
         <div class="w-full">
-          <div class="h-3 bg-slate-700 my-2 w-[80%] rounded col-span-2"></div>
-          <div class="h-3 bg-slate-700 w-[50%] rounded col-span-2"></div>
+          <div class="h-3 bg-[#9b9b9b] my-2 w-[80%] rounded col-span-2"></div>
+          <div class="h-3 bg-[#9b9b9b] w-[50%] rounded col-span-2"></div>
         </div>
-        <div class="h-6 w-6 bg-slate-700 rounded-full mr-4"></div>
+        <div class="h-6 w-6 bg-[#9b9b9b] rounded-full mr-4"></div>
       </div>
     </div>
   </div>
