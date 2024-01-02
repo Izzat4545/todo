@@ -33,6 +33,8 @@ export default {
           v-for="(taskDetail, detailKey) in task"
           :key="detailKey"
           :tasks="taskDetail"
+          :date="key.toString()"
+          :index="detailKey"
         />
       </ul>
     </div>

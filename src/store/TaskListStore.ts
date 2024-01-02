@@ -27,5 +27,15 @@ export const useTaskListStore = defineStore("tasks", {
       }
       postData(this.tasksFromServer);
     },
+    deleteTask(date: string, taskIndex: number) {
+      this.tasksFromServer[date].splice(taskIndex, 1);
+      this.tasksFromState[date].splice(taskIndex, 1);
+      if (this.tasksFromServer[date].length === 0) {
+        // If no tasks are left, remove the date
+        delete this.tasksFromServer[date];
+        delete this.tasksFromState[date];
+      }
+      postData(this.tasksFromServer);
+    },
   },
 });

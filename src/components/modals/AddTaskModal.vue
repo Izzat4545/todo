@@ -29,33 +29,24 @@ export default {
     },
     async submit() {
       if (this.form.priority && this.form.title.length > 0) {
-        this.error = "";
         this.$emit("submit", this.form);
         this.taskListStore.postTasks(this.form);
 
-        this.form = {
-          title: "",
-          priority: "",
-          description: "",
-          isFinished: false,
-        };
+        this.exitModal();
       } else {
         this.error = "Please fill all the fields";
       }
     },
-  },
-  watch: {
-    showModal(newValue) {
-      if (!newValue) {
-        // Reset the form when showModal becomes false
-        this.form = {
-          title: "",
-          priority: "",
-          description: "",
-          isFinished: false,
-        };
-        this.error = "";
-      }
+
+    exitModal() {
+      this.closeModal();
+      this.form = {
+        title: "",
+        priority: "",
+        description: "",
+        isFinished: false,
+      };
+      this.error = "";
     },
   },
 };
@@ -66,7 +57,7 @@ export default {
     <div class="modal-box">
       <form method="dialog">
         <button
-          @click="() => closeModal()"
+          @click="exitModal"
           className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
         >
           ✕

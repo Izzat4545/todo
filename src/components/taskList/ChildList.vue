@@ -2,11 +2,13 @@
 import { textSlicer } from "../../utils/textSlicer";
 import TaskInfoModal from "../modals/TaskInfoModal.vue";
 import { Task } from "../../types/Tasks";
+import { useTaskListStore } from "../../store/TaskListStore";
 export default {
   data() {
     return {
       limit: 35,
       isModalOpen: false,
+      taskListStore: useTaskListStore(),
     };
   },
   methods: {
@@ -16,8 +18,8 @@ export default {
     textSlicer(text: string): string {
       return textSlicer(text, this.limit);
     },
-    childFunction() {
-      console.log("child function");
+    deleteTask() {
+      this.taskListStore.deleteTask(this.date, this.index);
     },
     getPriorityClass(priority: string) {
       switch (priority) {
@@ -34,6 +36,8 @@ export default {
   },
   props: {
     tasks: { type: Object as () => Task, required: true },
+    date: { type: String, required: true },
+    index: { type: Number, required: true },
   },
   components: {
     TaskInfoModal,
@@ -65,7 +69,7 @@ export default {
         </div>
       </div>
       <button
-        @click.stop="childFunction"
+        @click.stop="deleteTask"
         class="btn btn-ghost btn-circle text-white"
       >
         <span class="material-symbols-outlined text-red-400"> delete </span>
