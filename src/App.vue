@@ -20,6 +20,8 @@ export default {
 </script>
 
 <template>
-  <Header />
+  <div class="bg-white py-4">
+    <Header />
+  </div>
   <List />
 </template>

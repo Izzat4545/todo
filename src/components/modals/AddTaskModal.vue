@@ -63,7 +63,7 @@ export default {
           ✕
         </button>
       </form>
-      <p class="py-4 text-[20px] text-center">Add task</p>
+      <p class="pb-4 text-[20px] text-center">Add task</p>
       <form @submit.prevent="submit" class="flex flex-col justify-center gap-2">
         <input
           class="input input-bordered rounded-md"

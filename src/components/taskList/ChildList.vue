@@ -45,8 +45,15 @@ export default {
 };
 </script>
 <template>
-  <TaskInfoModal :showModal="isModalOpen" :closeModal="toggleModal" />
+  <TaskInfoModal
+    :date="date"
+    :index="index"
+    :selectedTask="tasks"
+    :showModal="isModalOpen"
+    :closeModal="toggleModal"
+  />
   <li
+    @click="toggleModal"
     class="btn my-2 btn-ghost h-full rounded-md hover:bg-transparent overflow-hidden p-0 w-full group"
   >
     <div

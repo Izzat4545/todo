@@ -37,5 +37,11 @@ export const useTaskListStore = defineStore("tasks", {
       }
       postData(this.tasksFromServer);
     },
+    updateTask(date: string, taskIndex: number, updatedData: Task) {
+      this.tasksFromServer[date][taskIndex] = updatedData;
+      this.tasksFromState[date][taskIndex] = updatedData;
+
+      postData(this.tasksFromServer);
+    },
   },
 });

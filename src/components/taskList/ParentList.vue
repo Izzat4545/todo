@@ -22,7 +22,7 @@ export default {
 <template>
   <div
     v-if="taskListStore.tasksFromState && !taskListStore.isLoading"
-    class="w-[50%] m-auto"
+    class="w-[90%] sm:w-[50%] m-auto"
   >
     <div v-for="(task, key) in taskListStore.tasksFromState" :key="key">
       <div class="text-lg text-center py-3">
