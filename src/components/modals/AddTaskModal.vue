@@ -32,6 +32,13 @@ export default {
         this.error = "";
         this.$emit("submit", this.form);
         this.taskListStore.postTasks(this.form);
+
+        this.form = {
+          title: "",
+          priority: "",
+          description: "",
+          isFinished: false,
+        };
       } else {
         this.error = "Please fill all the fields";
       }
@@ -75,6 +82,7 @@ export default {
         />
         <div class="tabs">
           <button
+            type="button"
             @click="priorityController('important')"
             role="tab"
             class="tab rounded-lg h-full transition-all sm:text-[18px]"
@@ -86,6 +94,7 @@ export default {
             Important
           </button>
           <button
+            type="button"
             @click="priorityController('medium')"
             role="tab"
             class="tab rounded-lg h-full transition-all sm:text-[18px]"
@@ -97,6 +106,7 @@ export default {
             Medium
           </button>
           <button
+            type="button"
             @click="priorityController('optional')"
             role="tab"
             class="tab rounded-lg h-full transition-all sm:text-[18px]"

@@ -2,8 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./FirebaseConfig";
 import { get, getDatabase, ref, set } from "firebase/database";
-import { Task, MyData } from "../../types/Tasks";
-import { getCurrentDate } from "../getCurrentDate";
+import { MyData } from "../../types/Tasks";
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
@@ -17,10 +16,9 @@ export const readData = async (path: string): Promise<MyData | undefined> => {
   }
 };
 
-export function postData(data: Task[]) {
+export function postData(data: MyData) {
   try {
-    const currentDate = getCurrentDate();
-    const tasksRef = ref(database, "tasks/" + currentDate);
+    const tasksRef = ref(database, "tasks/");
     set(tasksRef, data);
   } catch (e) {
     console.log(e);
