@@ -54,11 +54,9 @@ export default {
   />
   <li
     @click="toggleModal"
-    class="btn my-2 btn-ghost h-full rounded-md hover:bg-transparent overflow-hidden p-0 w-full group"
+    class="btn my-2 btn-ghost transition-all h-full bg-base-200 hover:bg-base-300 rounded-md overflow-hidden p-0 w-full"
   >
-    <div
-      class="transition-all bg-slate-800 group-hover:bg-slate-700 w-full flex pr-2 h-[70px] items-center justify-between"
-    >
+    <div class="w-full flex pr-2 h-[70px] items-center justify-between">
       <div class="flex gap-2 h-full justify-start items-center">
         <!-- IMPORTANCE -->
         <div
@@ -70,8 +68,8 @@ export default {
           class="text-[18px] sm:text-[20px] transition-all relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bottom-1/3 after:left-0 after:bg-slate-500 after:transition-all after:duration-500 origin-bottom-right after:origin-bottom-left"
           :class="
             tasks.isFinished
-              ? 'text-slate-500 after:scale-x-100'
-              : 'text-slate-300 after:scale-x-0'
+              ? 'after:scale-x-100 isTaskFinished'
+              : 'after:scale-x-0'
           "
         >
           {{ textSlicer(tasks.title) }}
