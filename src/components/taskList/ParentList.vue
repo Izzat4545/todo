@@ -22,7 +22,7 @@ export default {
 <template>
   <div
     v-if="taskListStore.tasksFromState && !taskListStore.isLoading"
-    class="w-[90%] sm:w-[50%] m-auto"
+    class="w-[90%] sm:w-[50%] lg:w-[30%] m-auto"
   >
     <div v-for="(task, key) in taskListStore.tasksFromState" :key="key">
       <div class="text-lg text-center py-3">
@@ -44,7 +44,7 @@ export default {
     v-if="taskListStore.isLoading"
     v-for="index in 10"
     :key="index"
-    class="my-2 skeleton shadow rounded-md overflow-hidden w-[50%] m-auto"
+    class="my-2 skeleton shadow rounded-md overflow-hidden w-[90%] sm:w-[50%] lg:w-[30%] m-auto"
   >
     <div class="flex gap-1">
       <div class="bg-[#9b9b9b] h-[80px] px-2"></div>

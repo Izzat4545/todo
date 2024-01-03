@@ -6,7 +6,7 @@ import { useTaskListStore } from "../../store/TaskListStore";
 export default {
   data() {
     return {
-      limit: 35,
+      limit: 20,
       isModalOpen: false,
       taskListStore: useTaskListStore(),
     };
@@ -67,12 +67,14 @@ export default {
         ></div>
         <!-- TASK -->
         <div
-          class="text-[20px]"
+          class="text-[20px] transition-all"
           :class="
-            tasks.isFinished ? 'line-through text-slate-300' : 'text-black'
+            tasks.isFinished
+              ? 'text-slate-300 relative after:content-[\'\'] after:absolute after:w-full after:h-[2px] after:bottom-1/3 after:left-0 after:bg-slate-300 after:transition-all after:duration-500 origin-bottom-right after:scale-x-100 after:origin-bottom-left'
+              : 'text-black relative after:content-[\'\'] after:absolute after:w-full after:h-[2px] after:bottom-1/3 after:left-0 after:bg-slate-300 after:transition-all after:duration-500 origin-bottom-right after:scale-x-0 after:origin-bottom-left'
           "
         >
-          {{ tasks.title }}
+          {{ textSlicer(tasks.title) }}
         </div>
       </div>
       <button
