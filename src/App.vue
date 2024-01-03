@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-white py-4">
+  <div class="bg-base-100/75 sticky z-10 top-0 mb-5 flex justify-center">
     <Header />
   </div>
   <List />

@@ -13,16 +13,6 @@ export default {
       },
     };
   },
-  props: {
-    showModal: {
-      type: Boolean,
-      required: true,
-    },
-    closeModal: {
-      type: Function,
-      required: true,
-    },
-  },
   methods: {
     priorityController(selectedBtn: string) {
       this.form.priority = selectedBtn;
@@ -39,7 +29,7 @@ export default {
     },
 
     exitModal() {
-      this.closeModal();
+      this.taskListStore.toggleAddTaskModal();
       this.form = {
         title: "",
         priority: "",
@@ -53,7 +43,7 @@ export default {
 </script>
 
 <template>
-  <div class="modal" :class="{ 'modal-open': showModal }">
+  <div class="modal z-20" :class="{ 'modal-open': taskListStore.addTaskModal }">
     <div class="modal-box">
       <form method="dialog">
         <button

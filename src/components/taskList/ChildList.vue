@@ -57,7 +57,7 @@ export default {
     class="btn my-2 btn-ghost h-full rounded-md hover:bg-transparent overflow-hidden p-0 w-full group"
   >
     <div
-      class="bg-white transition-all group-hover:bg-slate-100 w-full flex pr-2 h-[70px] items-center justify-between"
+      class="transition-all bg-slate-800 group-hover:bg-slate-700 w-full flex pr-2 h-[70px] items-center justify-between"
     >
       <div class="flex gap-2 h-full justify-start items-center">
         <!-- IMPORTANCE -->
@@ -67,11 +67,11 @@ export default {
         ></div>
         <!-- TASK -->
         <div
-          class="text-[20px] transition-all"
+          class="text-[18px] sm:text-[20px] transition-all relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bottom-1/3 after:left-0 after:bg-slate-500 after:transition-all after:duration-500 origin-bottom-right after:origin-bottom-left"
           :class="
             tasks.isFinished
-              ? 'text-slate-300 relative after:content-[\'\'] after:absolute after:w-full after:h-[2px] after:bottom-1/3 after:left-0 after:bg-slate-300 after:transition-all after:duration-500 origin-bottom-right after:scale-x-100 after:origin-bottom-left'
-              : 'text-black relative after:content-[\'\'] after:absolute after:w-full after:h-[2px] after:bottom-1/3 after:left-0 after:bg-slate-300 after:transition-all after:duration-500 origin-bottom-right after:scale-x-0 after:origin-bottom-left'
+              ? 'text-slate-500 after:scale-x-100'
+              : 'text-slate-300 after:scale-x-0'
           "
         >
           {{ textSlicer(tasks.title) }}

@@ -2,16 +2,20 @@ import { defineStore } from "pinia";
 import { Task, MyData } from "../types/Tasks";
 import { postData, readData } from "../utils/firebaseUtils/FirebaseCrud";
 import { getCurrentDate } from "../utils/getCurrentDate";
+import ReverseTasks from "../utils/reverseTasks";
 
 export const useTaskListStore = defineStore("tasks", {
   state: () => ({
     isLoading: true,
+    addTaskModal: false,
     tasksFromServer: {} as MyData,
     tasksFromState: {} as MyData,
   }),
+
   actions: {
     async fetchTasks() {
       this.tasksFromServer = (await readData("tasks")) || {};
+      this.tasksFromServer = ReverseTasks(this.tasksFromServer);
       this.tasksFromState = JSON.parse(JSON.stringify(this.tasksFromServer));
       this.isLoading = false;
     },
@@ -42,6 +46,9 @@ export const useTaskListStore = defineStore("tasks", {
       this.tasksFromState[date][taskIndex] = updatedData;
 
       postData(this.tasksFromServer);
+    },
+    toggleAddTaskModal() {
+      this.addTaskModal = !this.addTaskModal;
     },
   },
 });
