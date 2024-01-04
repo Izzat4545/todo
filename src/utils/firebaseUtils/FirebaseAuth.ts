@@ -47,3 +47,13 @@ export function isUserSignedIn() {
     });
   });
 }
+
+export function currentUserId() {
+  const auth = getAuth();
+  return new Promise((resolve) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      unsubscribe(); // Unsubscribe to avoid memory leaks
+      resolve(user?.uid);
+    });
+  });
+}

@@ -3,22 +3,25 @@ import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./FirebaseConfig";
 import { get, getDatabase, ref, set } from "firebase/database";
 import { MyData } from "../../types/Tasks";
+import { currentUserId } from "./FirebaseAuth";
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 export const readData = async (path: string): Promise<MyData | undefined> => {
+  const userId = await currentUserId();
   try {
-    const snapshot = await get(ref(database, path));
+    const snapshot = await get(ref(database, `users/${userId}/${path}/`));
     return snapshot.val();
   } catch (e) {
     console.log(e);
   }
 };
 
-export function postData(data: MyData) {
+export async function postData(data: MyData) {
+  const userId = await currentUserId();
   try {
-    const tasksRef = ref(database, "tasks/");
+    const tasksRef = ref(database, `users/${userId}/tasks/`);
     set(tasksRef, data);
   } catch (e) {
     console.log(e);

@@ -39,6 +39,13 @@ export default {
       </ul>
     </div>
   </div>
+  <div
+    class="flex justify-center h-[90vh] items-center"
+    v-if="Object.keys(taskListStore.tasksFromState).length < 1"
+  >
+    <p class="text-[30px]">Do something!!</p>
+  </div>
+
   <!-- SKELET -->
   <div
     v-if="taskListStore.isLoading"
