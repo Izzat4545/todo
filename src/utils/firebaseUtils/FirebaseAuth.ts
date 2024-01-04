@@ -31,7 +31,7 @@ export async function logInUser(
   }
 }
 
-export function logOut() {
+export function logOutUser() {
   const auth = getAuth();
   signOut(auth).catch((error) => {
     console.log(error.message);

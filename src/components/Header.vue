@@ -1,5 +1,6 @@
 <script lang="ts">
 import { useTaskListStore } from "../store/TaskListStore";
+import { logOutUser } from "../utils/firebaseUtils/FirebaseAuth";
 import AddTaskModal from "./modals/AddTaskModal.vue";
 import ThemeSwitcher from "./ThemeSwitcher.vue";
 export default {
@@ -11,6 +12,12 @@ export default {
   components: {
     AddTaskModal,
     ThemeSwitcher,
+  },
+  methods: {
+    async logOut() {
+      logOutUser();
+      location.reload();
+    },
   },
 };
 </script>
@@ -32,6 +39,9 @@ export default {
         class="btn btn-ghost btn-circle"
       >
         <span class="material-symbols-outlined"> add </span>
+      </button>
+      <button @click="logOut" class="btn btn-ghost btn-circle">
+        <span class="material-symbols-outlined"> logout </span>
       </button>
     </div>
   </div>

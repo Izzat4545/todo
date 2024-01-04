@@ -41,7 +41,10 @@ export default {
   </div>
   <div
     class="flex justify-center h-[90vh] items-center"
-    v-if="Object.keys(taskListStore.tasksFromState).length < 1"
+    v-if="
+      Object.keys(taskListStore.tasksFromState).length < 1 &&
+      !taskListStore.isLoading
+    "
   >
     <p class="text-[30px]">Do something!!</p>
   </div>
