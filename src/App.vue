@@ -1,6 +1,4 @@
 <script lang="ts">
-import { isUserSignedIn } from "./utils/firebaseUtils/FirebaseAuth";
-
 export default {
   data() {
     return {};
